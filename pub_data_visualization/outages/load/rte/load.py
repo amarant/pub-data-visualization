@@ -114,7 +114,7 @@ def load(map_code = None):
         
         print('Complete capacities')
         for unit_name in sorted(df[global_var.unit_name].unique()):
-            if pd.isnull(df.loc[df[global_var.unit_name] == unit_name][global_var.capacity_nominal_mw]).all() > 0:
+            if pd.isnull(df.loc[df[global_var.unit_name] == unit_name][global_var.capacity_nominal_mw]).all() > 0 and unit_name in transcode.capacity:
                 df.loc[df[global_var.unit_name] == unit_name,global_var.capacity_nominal_mw] = transcode.capacity[unit_name]
         df[global_var.commodity] = global_var.commodity_electricity
         
